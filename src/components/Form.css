@@ -1,0 +1,74 @@
+.col-input{
+  width: 60%;
+  float: left;
+}
+
+.col-amount{
+    width: 20%;
+    float: left;
+    padding-left: 5px;
+}
+.col-add{
+    width: 10%;
+    float: left;
+}
+.addBtn{
+  border: none;
+  height: 43px;
+  width: 80px;
+  font-size: 20px;
+  color: #f0f0f0;
+  background: #034f84;
+  margin-top: 4px;
+  border: 1px solid #999999;
+}
+.addBtn:hover{
+  background: #36486b;
+}
+.item-added{
+  color: white;
+  position: absolute;
+  left: 160px;
+  top: 200px;
+  background-color: green;
+  width: 10%;
+  text-align: center;
+}
+
+form{
+  margin-top: 20px;
+}
+
+input[type=text]{
+  width: 95%;
+  height: 40px;
+  font-size: 18px;
+  margin-left: 15px;
+  margin-top: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  outline: none;
+  border: 1px solid #999999;
+  box-shadow:0 0px 3px 1px #C0C0C0 inset;
+  padding-left: 15px;
+}
+
+input:focus{
+  border: 1px solid #3366FF;
+}
+input[type=number]:focus{
+  border: 1px solid #3366FF;
+}
+
+input[type=number]{
+  width: 50%;
+  height: 40px;
+  margin-top: 5px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid #999999;
+  box-shadow:0 0px 3px 1px #C0C0C0 inset;
+  padding-left: 15px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

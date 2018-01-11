@@ -2,25 +2,29 @@ import React from 'react';
 import './ItemsToShop.css';
 
 class ItemsToShop extends React.Component{
-  render(){
-    const listItems = this.props.items.map((item, i)=>
+  renderItems = (items, shopped) =>{
+    return items.map((item, i)=>
       <li key = {i}>
         <label className="list-label">
-          <input type="checkbox" className="check" onClick = {(e)=>this.props.moveToShopped(e, i)} />
+          {shopped || <input type="checkbox" className="check" onClick = {(e)=>this.props.moveToShopped(e, i)} />}
           <span className="list-item">{item.itemName} - {item.quantity}</span>
         </label>
         <div className="edit-delete">
           <span className="fa-stack fa-lg">
               <i className="fa fa-square fa-stack-2x"></i>
-              <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
+              <i className={`fa ${shopped ? 'fa-undo':'fa-pencil'} fa-stack-1x fa-inverse`} onClick={() => shopped && this.props.undoItem(i)}></i>
           </span>
           <span className="fa-stack fa-lg">
               <i className="fa fa-square fa-stack-2x"></i>
-              <i className="fa fa-trash fa-stack-1x fa-inverse delete" onClick = {()=>this.props.deleteItem(i)}></i>
+              <i className="fa fa-trash fa-stack-1x fa-inverse delete" onClick = {()=>  shopped ? this.props.deleteShoppedItem(i) : this.props.deleteItem(i) }></i>
             </span>
           </div>
-      </li>
-    );
+      </li>);
+  }
+
+  render(){
+    const listItems = this.renderItems(this.props.items, false)
+    const listShoppedItems = this.renderItems(this.props.itemShopped, true)
 
     return(
       <section>
@@ -41,24 +45,7 @@ class ItemsToShop extends React.Component{
       </div>
         <div className="row"> {/*item done*/}
           <ul id="ul-item-shopped">
-            {this.props.itemShopped.map((item, i)=>
-              <li key = {i}>
-                <label className="list-label">
-                  <span className="list-item">{item.itemName} - {item.quantity}</span>
-                </label>
-                <div className="edit-delete">
-                  <span className="fa-stack fa-lg">
-                      <i className="fa fa-square fa-stack-2x"></i>
-                      <i className="fa fa-undo fa-stack-1x fa-inverse" onClick = {()=>this.props.undoItem(i)}></i>
-                  </span>
-                  <span className="fa-stack fa-lg">
-                      <i className="fa fa-square fa-stack-2x"></i>
-                      <i className="fa fa-trash fa-stack-1x fa-inverse delete" onClick = {()=>this.props.deleteShoppedItem(i)}></i>
-                    </span>
-                  </div>
-              </li>
-
-             )}
+          {listShoppedItems}
           </ul>
         </div>
       </section>

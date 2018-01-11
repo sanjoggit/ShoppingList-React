@@ -1,17 +1,14 @@
 import React from 'react';
-
-class Form extends React.Component{
-
-  render(){
-    return(
-      <form>
+import './Form.css';
+const Form = (props)=>
+      <form onSubmit = {props.onSubmit}>
         <div className="col-input">
           <input
             type="text"
             name = "itemName"
             placeholder="Add new item"
-            value = {this.props.currentItem.itemName}
-            onChange = {e=>{this.props.change(e)}}
+            value = {props.currentItem.itemName}
+            onChange = {e=>{props.change(e)}}
              />
         </div>
         <div className="col-amount">
@@ -19,17 +16,14 @@ class Form extends React.Component{
             type="number"
             name = "quantity"
             placeholder="0"
-            value = {this.props.currentItem.quantity}
-            onChange = {e=>{this.props.change(e)}}
+            value = {props.currentItem.quantity}
+            onChange = {e=>{props.change(e)}}
              />
         </div>
         <div className="col-add">
-          <input type="button" value="Add" className="addBtn" id="addBtn" onClick = {e=> this.props.onSubmit(e)}/>
+          <input type="submit" value="Add" className="addBtn" id="addBtn" />
         </div>
+        <div className="item-added">{props.currentItem.message}</div>
       </form>
-
-    )
-  }
-}
 
 export default Form;

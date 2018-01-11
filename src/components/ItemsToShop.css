@@ -1,8 +1,81 @@
+ul{
+  list-style: none;
+  margin-top: 40px;
+  margin-left: 20px;
+}
 
+label{
+  cursor: pointer;
+  font-size: 25px;
+
+}
+.list-item{
+  font-size: 20px;
+}
 
 #ul-item-shopped{
   padding-bottom: 20px;
 }
 #ul-item-shopped .list-item{
   text-decoration: line-through;
+}
+
+h5{
+  margin-top: 50px;
+  margin-left: 20px;
+  font-family: 'Annie Use Your Telescope';
+}
+hr{
+  width: 73%;
+  border: 1px solid #b1cbbb;
+  margin-left: 20px;
+}
+#ul-item-list li{
+  margin-right: 10px;
+  background-color: #b1cbbb;
+  margin-bottom: 2px;
+  padding-top: 5px;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+.row{
+  width: 100%;
+  float: left;
+}
+
+
+.fa-lg{
+  font-size: 15px;
+  margin-top: -3px;
+}
+.edit-delete{
+  float: right;
+  margin-right: 10px;
+}
+.fa-trash:hover{
+  background-color: #ff0000;
+  border-radius: 5px;
+}
+.fa-undo:hover{
+  background: #0040ff;
+  border-radius: 5px;
+}
+
+
+input[type='checkbox']:hover + .list-item::before{
+  font-family: "FontAwesome";
+  content: "\f14a";
+  margin-right: 10px;
+  color: green;
+}
+
+input[type='checkbox']{
+  display: none;
+}
+input[type='checkbox'] + .list-item::before{
+  font-family: "FontAwesome";
+  content: '\f096';
+  margin-right: 10px;
+  font-size: 30px;
 }

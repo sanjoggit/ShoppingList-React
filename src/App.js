@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Form from './components/Form';
 import ItemsToShop from './components/ItemsToShop.js';
 
+
 class App extends Component {
   constructor(){
     super();
@@ -32,10 +33,13 @@ class App extends Component {
       ],
         itemName: '',
         quantity: '',
+        message: '',
       itemShopped: []
 
     }
   }
+
+
   change = e=>{
     this.setState({
       [e.target.name]: e.target.value
@@ -50,13 +54,15 @@ class App extends Component {
     this.setState({
       items,
       itemName:'',
-      quantity: ''
+      quantity: '',
+      message: 'item added'
     });
+    setTimeout(()=>{ this.setState({message: ''}) }, 500);
   }
 
   deleteItem = (i)=>{
-    const items = this.state.items;
-    items.splice(i, 1);
+    const items = this.state.items.filter((item, index) => index !== i);
+    console.log(items);
     this.setState({
       items
     });
@@ -65,10 +71,9 @@ class App extends Component {
 
   moveToShopped = (e, i)=>{
     //e.preventDefault();
-    const items = this.state.items;
-    const itemToShop = items[i];
+    const items = this.state.items.filter((item, index) => index !== i);
+    const itemToShop = this.state.items[i];
     const itemShopped = this.state.itemShopped.concat(itemToShop);
-    items.splice(i, 1);
     this.setState({
       itemShopped,
       items
@@ -76,21 +81,18 @@ class App extends Component {
   }
 
   deleteShoppedItem = (i)=>{
-    const shoppedItem = this.state.itemShopped;
-    shoppedItem.splice(i, 1);
+    const itemShopped = this.state.itemShopped.filter((item, index) => index !== i);
     this.setState({
-      shoppedItem
+      itemShopped
     });
 
   }
   undoItem = (i)=>{
-    const shoppedItem = this.state.itemShopped;
-    //shoppedItem[i];
-    const itemToShop = this.state.items.concat(shoppedItem[i]);
-    shoppedItem.splice(i, 1);
+    const itemShopped = this.state.itemShopped.filter((item, index) => index !== i);
+    const itemToShop = this.state.items.concat(this.state.itemShopped[i]);
     this.setState({
       items: itemToShop,
-      shoppedItem
+      itemShopped
     });
   }
 
