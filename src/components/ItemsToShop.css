@@ -1,0 +1,8 @@
+
+
+#ul-item-shopped{
+  padding-bottom: 20px;
+}
+#ul-item-shopped .list-item{
+  text-decoration: line-through;
+}
